@@ -1,0 +1,7 @@
+FastAPI
+Jinja2
+Sqlalchemy
+Sqlalchemy-utils
+Pydantic
+Psycopg2-binary
+Uvicorn[standard]
