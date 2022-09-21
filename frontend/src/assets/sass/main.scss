@@ -11,6 +11,7 @@
 // $brown: #757763;
 // $beige-light: #D0D1CD;
 // $beige-lighter: white;
+//$test-light: red;
 
 // // Update Bulma's global variables
 // $family-sans-serif: "Nunito", sans-serif;
@@ -26,18 +27,20 @@
 // $control-border-width: 2px;
 // $input-border-color: transparent;
 // $input-shadow: none;
-$danger: brown;
-$danger-invert: findColorInvert($danger);
+//$danger: $test-light;
+//$danger-invert: findColorInvert($test-light);
 
-//@import '~bulma'
+
+@import '~bulma'
 // Import only what you need from Bulma
-@import "~bulma/sass/utilities/_all.sass";
-@import "~/node_modules/bulma/sass/base/_all.sass";
-@import "~/node_modules/bulma/sass/base/_all.sass";
-@import "~/node_modules/bulma/sass/elements/button.sass";
-@import "~/node_modules/bulma/sass/elements/container.sass";
-@import "~/node_modules/bulma/sass/elements/title.sass";
-@import "~/node_modules/bulma/sass/form/_all.sass";
-@import "~/node_modules/bulma/sass/components/navbar.sass";
-@import "~/node_modules/bulma/sass/layout/hero.sass";
-@import "~/node_modules/bulma/sass/layout/section.sass";
+// @import "~bulma/sass/utilities/_all.sass";
+// @import "~/node_modules/bulma/sass/base/_all.sass";
+
+// @import "~/node_modules/bulma/sass/elements/button.sass";
+// @import "~/node_modules/bulma/sass/elements/container.sass";
+// @import "~/node_modules/bulma/sass/elements/title.sass";
+// @import "~/node_modules/bulma/sass/form/_all.sass";
+// @import "~/node_modules/bulma/sass/components/navbar.sass";
+// @import "~/node_modules/bulma/sass/layout/hero.sass";
+// @import "~/node_modules/bulma/sass/layout/section.sass";
+// @import "~/node_modeules/bulma/sass/layout/tiles.sass";

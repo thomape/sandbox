@@ -14,6 +14,7 @@
     <input type="text" v-model="form.email" />
 
     <button v-on:click="submit()">Submit</button>
+    <button v-on:click="remove()">Delete</button>
   </div>
 </template>
 
@@ -50,6 +51,15 @@ export default {
           this.msg = response.data;
         }.bind(this)
       );
+    },
+    remove() {
+      axios
+        .delete("http://127.0.0.1:8000/contact/delete", this.form.first_name)
+        .then(
+          function (response) {
+            this.msg = response.dat;
+          }.bind(this)
+        );
     },
   },
   created() {
