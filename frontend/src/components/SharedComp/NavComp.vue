@@ -42,6 +42,17 @@
             <router-link to="/signin" class="button is-light">
               Sign in
             </router-link>
+            <body id="body" class="dark-mode">
+              <button
+                class="button"
+                type="button"
+                name="dark_light"
+                @click="toggleDarkLight()"
+                title="Toggle dark/light mode"
+              >
+                🌛
+              </button>
+            </body>
           </div>
         </div>
       </div>
@@ -56,5 +67,41 @@ export default {
       isOpen: false,
     };
   },
+  methods: {
+    toggleDarkLight() {
+      var body = document.getElementById("body");
+      var currentClass = body.className;
+      body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+$dark-color: #111;
+$light-color: #eee;
+
+body.dark-mode {
+  background-color: $dark-color;
+  color: $light-color;
+  a {
+    color: $dark-color;
+  }
+  button {
+    background-color: $light-color;
+    color: $dark-color;
+  }
+}
+
+body.light-mode {
+  background-color: $light-color;
+  color: $dark-color;
+  a {
+    color: $dark-color;
+  }
+  button {
+    background-color: $dark-color;
+    color: $light-color;
+  }
+}
+</style>
