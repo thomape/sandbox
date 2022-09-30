@@ -3,46 +3,25 @@
     <p>{{ msg }}</p>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <div class="container">
-        <div class="card">
-          <div class="card-header-title">Newsletter Sign Up</div>
-          <div class="card-content">
-            <label class="label">First Name</label>
-            <input
-              class="input is-rounded"
-              type="text"
-              v-model="form.first_name"
-            />
+  <div class="container">
+    <div class="card">
+      <div class="card-header-title">Newsletter Sign Up</div>
+      <div class="card-content">
+        <label class="label">First Name</label>
+        <input class="input is-rounded" type="text" v-model="form.first_name" />
 
-            <label class="label">Last Name</label>
-            <input
-              class="input is-rounded"
-              type="text"
-              v-model="form.last_name"
-            />
+        <label class="label">Last Name</label>
+        <input class="input is-rounded" type="text" v-model="form.last_name" />
 
-            <label class="label">Email</label>
-            <input class="input is-rounded" type="email" v-model="form.email" />
-
-            <section class="section">
-              <button class="button" v-on:click="submit()">Submit</button>
-              <button class="button" v-on:click="remove()">Delete</button>
-            </section>
-            <footer class="card-footer">
-              <a class="card-footer-item" @click="submit">Sign Up</a>
-              <a class="card-footer-item" @click="remove">Delete</a>
-            </footer>
+        <label class="label">Email</label>
+        <input class="input is-rounded" type="email" v-model="form.email" />
+        <footer class="card-footer">
+          <a class="card-footer-item" @click="submit">Sign Up</a>
+          <a class="card-footer-item" @click="remove">Delete</a>
+          <div>
+            <p>{{ msg }}</p>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="container">
-        <figure class="image">
-          <img src="@/assets/images/news.jpg" />
-        </figure>
+        </footer>
       </div>
     </div>
   </div>
@@ -75,7 +54,7 @@ export default {
         });
     },
     submit() {
-      axios.post("http://127.0.0.1:8000/contact", this.form).then(
+      axios.post("http://127.0.0.1:8000/create-contact", this.form).then(
         function (response) {
           // Handle success
           this.msg = response.data;
@@ -83,13 +62,11 @@ export default {
       );
     },
     remove() {
-      axios
-        .delete("http://127.0.0.1:8000/contact/delete", this.form.first_name)
-        .then(
-          function (response) {
-            this.msg = response.dat;
-          }.bind(this)
-        );
+      axios.delete("http://127.0.0.1:8000/delete-contact", 21).then(
+        function (response) {
+          this.msg = response.data;
+        }.bind(this)
+      );
     },
   },
   created() {
@@ -106,5 +83,31 @@ export default {
   &:active {
     background-color: rgb(202, 202, 202);
   }
+}
+.card {
+  background-image: url("@/assets/images/news.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card .label {
+  color: rgb(105, 105, 133);
+}
+
+.card .input {
+  opacity: 70%;
+  color: black;
+}
+
+.card-header-title {
+  color: white;
+  font-size: 2em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.card-footer-item {
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 </style>

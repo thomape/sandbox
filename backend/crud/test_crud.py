@@ -1,5 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 from database.database import DBConnection
+from models.test_model import ContactModel
 
 
 class TestCrud():
@@ -14,7 +15,7 @@ class TestCrud():
             dbconn.creds['pgdb']
         )
         
-    def insert_contact(self,c_model):    
+    def create_contact(self,c_model):    
         Session = sessionmaker(bind=self.engine)
         session = Session()
         session.add(c_model)
@@ -22,12 +23,19 @@ class TestCrud():
         session.close()
         return('Successfully added to DB')
 
-    def delete_contact(self, contact_name):
+    def get_all_contacts(self):
         Session = sessionmaker(bind=self.engine)
         session = Session()
-        c_model = ContactModel()
-        session.query(c_model).filter(c_model['first_name']==contact_name).delete()
+        session.get()
+        session.close()
+        return session
+
+    def delete_contact(self, contact_id):
+        Session = sessionmaker(bind=self.engine)
+        session = Session()
+        session.delete(contact_id)
         session.commit()
+        return('Successfully deleted from DB')
         
 
     

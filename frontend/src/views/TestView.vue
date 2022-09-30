@@ -10,40 +10,45 @@
                 class="tile is-child notification is-primary float-tile"
                 @click="show('evelyn')"
               >
-                <div class="container">
-                  <div class="card">
-                    <div class="card-image">
-                      <figure class="image is-4by3">
-                        <img src="@/assets/images/mustang.jpg" alt="Mustang" />
-                      </figure>
-                    </div>
-                    <div class="card-content">
-                      <div class="media">
-                        <div class="media-left">
-                          <figure class="image is-48x48">
-                            <img
-                              src="@/assets/images/person3.jpg"
-                              alt="Evelyn Stewart"
-                            />
-                          </figure>
-                        </div>
-                        <div class="media-content">
-                          <p class="title is-4">Evelyn Stewart</p>
-                          <p class="subtitle is-6">@evelynstewart</p>
-                        </div>
+                <section>
+                  <div class="container">
+                    <div class="card">
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                          <img
+                            src="@/assets/images/mustang.jpg"
+                            alt="Mustang"
+                          />
+                        </figure>
                       </div>
+                      <div class="card-content">
+                        <div class="media">
+                          <div class="media-left">
+                            <figure class="image is-48x48">
+                              <img
+                                src="@/assets/images/person3.jpg"
+                                alt="Evelyn Stewart"
+                              />
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <p class="title is-4">Evelyn Stewart</p>
+                            <p class="subtitle is-6">@evelynstewart</p>
+                          </div>
+                        </div>
 
-                      <div class="content">
-                        Nulla facilisi nullam vehicula ipsum a arcu cursus vitae
-                        congue.
-                        <a href="#">#mustang</a>
-                        <a href="#"> #crazyhorse</a>
-                        <br />
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        <div class="content">
+                          Nulla facilisi nullam vehicula ipsum a arcu cursus
+                          vitae congue.
+                          <a href="#">#mustang</a>
+                          <a href="#"> #crazyhorse</a>
+                          <br />
+                          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
               </div>
               <!-- Giraffe tile -->
               <div
@@ -310,7 +315,7 @@
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">JEvelyn Stewart</p>
+                <p class="title is-4">Evelyn Stewart</p>
                 <p class="subtitle is-6">@evelynstewart</p>
               </div>
             </div>
@@ -426,15 +431,20 @@
         </div>
       </div>
     </div>
+    <div class="is-divider"></div>
   </section>
+  <TestCaroComp />
 </template>
 
 <script>
 import TestComp from "@/components/TestComp/TestComp.vue";
+import TestCaroComp from "@/components/TestComp/TestCaroComp.vue";
+
 export default {
   name: "TestView",
   components: {
     TestComp,
+    TestCaroComp,
   },
   data() {
     return {
@@ -478,7 +488,7 @@ export default {
   cursor: pointer;
   transition: all 0.1s;
   &:hover {
-    transform: scale(1.05, 1.05);
+    transform: scale(1.02, 1.02);
     box-shadow: 20px 20px 50px gray;
   }
 }

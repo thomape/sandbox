@@ -31,7 +31,23 @@
 //$danger-invert: findColorInvert($test-light);
 
 
-@import '~bulma'
+
+
+
+$primary: #f4f1de;
+$info: #f2cc8f;
+$success: #81b29a;
+$warning: #e07a5f;
+$danger: #3d405b;
+$dark: #797d62;
+$light: #f0f3bd;
+
+
+
+
+@import '~bulma';
+@import '~bulma-extensions';
+
 // Import only what you need from Bulma
 // @import "~bulma/sass/utilities/_all.sass";
 // @import "~/node_modules/bulma/sass/base/_all.sass";

@@ -1,7 +1,7 @@
 <template>
   <div id="body" class="dark-mode">
     <nav
-      class="navbar"
+      class="navbar is-success"
       id="nav-bar"
       role="navigation"
       aria-label="main navigation"
