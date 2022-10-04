@@ -4,11 +4,16 @@ require("@/assets/sass/main.scss");
 import axios from "axios";
 import router from "./router";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUp,
+  faEnvelope,
+  faLock,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { BulmaExtensions } from "bulma-extensions";
 
-library.add(faArrowUp);
+library.add(faArrowUp, faEnvelope, faLock, faCheck);
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = "http://localhost:8000/"; // the FastAPI backend
