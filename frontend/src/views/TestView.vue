@@ -154,7 +154,7 @@
           <!-- Wide Tile -->
           <div class="tile is-parent">
             <router-link
-              to="/main"
+              to="/"
               class="tile is-child notification is-danger float-tile"
             >
               <p class="title">Purus gravida</p>

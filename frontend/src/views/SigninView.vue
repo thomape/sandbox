@@ -1,6 +1,5 @@
 <template>
   <div class="login">
-    <h1>Signin Page</h1>
     <div class="section">
       <div class="container">
         <div class="card">
@@ -117,3 +116,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.login {
+  height: 100vh;
+}
+</style>

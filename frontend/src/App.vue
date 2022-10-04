@@ -32,20 +32,41 @@
         v-bind:class="{ 'is-active': isOpen }"
       >
         <div class="navbar-start">
-          <router-link to="/store" class="navbar-item">Store</router-link>
-          <router-link to="/blog" class="navbar-item">Blog</router-link>
-          <router-link to="/about" class="navbar-item">About</router-link>
-          <router-link to="/contact" class="navbar-item">Contact</router-link>
-          <router-link to="/test" class="navbar-item">Test</router-link>
+          <router-link to="/store" class="navbar-item" @click="isOpen = !isOpen"
+            >Store</router-link
+          >
+          <router-link to="/blog" class="navbar-item" @click="isOpen = !isOpen"
+            >Blog</router-link
+          >
+          <router-link to="/about" class="navbar-item" @click="isOpen = !isOpen"
+            >About</router-link
+          >
+          <router-link
+            to="/contact"
+            class="navbar-item"
+            @click="isOpen = !isOpen"
+            >Contact</router-link
+          >
+          <router-link to="/test" class="navbar-item" @click="isOpen = !isOpen"
+            >Test</router-link
+          >
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/signup" class="button is-primary">
+              <router-link
+                to="/signup"
+                class="button is-primary"
+                @click="isOpen = !isOpen"
+              >
                 <strong>Sign up</strong>
               </router-link>
-              <router-link to="/signin" class="button is-light">
+              <router-link
+                to="/signin"
+                class="button is-light"
+                @click="isOpen = !isOpen"
+              >
                 Sign in
               </router-link>
 
@@ -69,7 +90,7 @@
 
 <script>
 export default {
-  data: function () {
+  data() {
     return {
       isOpen: false,
     };
@@ -79,6 +100,7 @@ export default {
       var body = document.getElementById("body");
       var currentClass = body.className;
       body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+      this.isOpen = !this.isOpen;
     },
   },
 };

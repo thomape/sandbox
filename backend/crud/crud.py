@@ -1,5 +1,3 @@
-from cgitb import reset
-import re
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
 from models.models import AccountModel
@@ -49,7 +47,3 @@ class Crud():
             return "Success"
         else:
             return "Invalid username/password"
-        
-
-    
-    

@@ -43,16 +43,16 @@ export default {
     };
   },
   methods: {
-    getMessage() {
-      axios
-        .get("/")
-        .then((res) => {
-          this.msg = res.data;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
+    // getMessage() {
+    //   axios
+    //     .get("/")
+    //     .then((res) => {
+    //       this.msg = res.data;
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // },
     submit() {
       axios.post("http://127.0.0.1:8000/create-contact", this.form).then(
         function (response) {
@@ -69,9 +69,9 @@ export default {
       );
     },
   },
-  created() {
-    this.getMessage();
-  },
+  // created() {
+  //   this.getMessage();
+  // },
 };
 </script>
 
