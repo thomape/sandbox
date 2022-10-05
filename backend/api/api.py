@@ -2,10 +2,14 @@ from fastapi import APIRouter, Query
 from schemas.schemas import AccountSchema, ContactSchema
 from models.models import AccountModel, ContactModel
 from crud.crud import Crud
-from datetime import date
+import datetime as dt
 router = APIRouter()
 contacts = {}
 
+
+@router.get('/')
+def home():
+    return {'message':'Home'}
 
 @router.get('/get-all-contacts')
 def test():
@@ -29,13 +33,22 @@ def delete_contact(contact_id:int):
     
 
 @router.post('/signin')
-def signin(account:AccountSchema):
+def sign_in(account:AccountSchema):
     a_model = AccountModel()
-    #a_model.id = account.id
     a_model.email = account.email
     a_model.user_pwd = account.password
-    a_model.created_on = date.today()
-    a_model.last_login = date.today()
     crud = Crud()
-    res = crud.signin(a_model)
+    res = crud.sign_in(a_model)
+    return res
+
+@router.post('/signup')
+def sign_up(account:AccountSchema):
+    a_model = AccountModel()
+    a_model.email = account.email
+    a_model.user_pwd = account.password
+    a_model.created_on = dt.datetime.now()
+    a_model.last_login = dt.datetime.now()
+    a_model.login_attempts = 0
+    crud = Crud()
+    res = crud.sign_up(a_model)
     return res

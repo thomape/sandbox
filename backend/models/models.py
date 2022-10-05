@@ -1,9 +1,5 @@
-from datetime import datetime
-from enum import unique
-from operator import index
-from sqlite3 import Timestamp
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, LargeBinary
 
 Base = declarative_base()
 
@@ -25,6 +21,8 @@ class AccountModel(Base):
 
     user_id = Column(Integer, index=True, unique=True, autoincrement=True, primary_key=True)
     email = Column(String, primary_key=True, unique=True)
-    user_pwd = Column(String)
+    user_pwd = Column(LargeBinary)
+    salt = Column(LargeBinary)
     created_on = Column(String)
     last_login = Column(String)
+    login_attempts = Column(Integer)

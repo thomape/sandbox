@@ -1,4 +1,3 @@
-from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
 
@@ -10,8 +9,8 @@ class ContactSchema(BaseModel):
     email: Optional[str] = None
 
 class AccountSchema(BaseModel):
-    user_id: Optional[int] = None
+    #user_id: Optional[int] = None
     email: str
     password: str
-    created_on: Optional[str] = None
-    last_login: Optional[str] = None
+    #created_on: Optional[str] = None
+    #last_login: Optional[str] = None
