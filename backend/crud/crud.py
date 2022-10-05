@@ -5,12 +5,11 @@ import hashlib
 import hmac
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
-from models.models import AccountModel
+from models.models import AccountModel, Base
 from database.database import DBConnection
 
 
-class Crud():
-
+class BaseOperations:
     def __init__(self):
         dbconn = DBConnection()
         self.engine = dbconn.get_engine(
@@ -21,6 +20,9 @@ class Crud():
             dbconn.creds['pgdb']
         )
         
+
+class ContactOperations(BaseOperations):
+
     def create_contact(self,c_model):    
         Session = sessionmaker(bind=self.engine)
         session = Session()
@@ -42,6 +44,10 @@ class Crud():
         session.delete(contact_id)
         session.commit()
         return('Successfully deleted from DB')
+
+
+
+class AccountOperations(BaseOperations):
 
     def sign_in(self,a_model):
         Session = sessionmaker(bind=self.engine)
@@ -90,6 +96,7 @@ class Crud():
             session.commit()
             session.close()
             return {"message":"New account created."}
+
 
 
 class PasswordEncryption:
