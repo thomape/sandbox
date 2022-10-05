@@ -46,8 +46,6 @@ class Crud():
     def sign_in(self,a_model):
         Session = sessionmaker(bind=self.engine)
         session = Session()
-        #statement = session.query(AccountModel).filter(AccountModel.email == a_model.email)
-        #account = session.execute(statement)
 
         check_pwd = PasswordEncryption()
         target_user = session.query(AccountModel).filter(AccountModel.email == a_model.email)
