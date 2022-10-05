@@ -1,22 +1,31 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends
+from fastapi.security import HTTPBasicCredentials, HTTPBasic
 from schemas.schemas import AccountSchema, ContactSchema
 from models.models import AccountModel, ContactModel
 from crud.crud import ContactOperations, AccountOperations
 import datetime as dt
+from api.auth import SecurityService
+
+
 router = APIRouter()
-contacts = {}
+http_basic = HTTPBasic()
+ss = SecurityService()
 
 
 @router.get('/')
-def home():
+def home(credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
     return {'message':'Home'}
 
 @router.get('/get-all-contacts')
-def test():
+def test(credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
     return {'message':'test'}
 
 @router.post('/create-contact')
-def create_contact(contact:ContactSchema):
+def create_contact(contact:ContactSchema,credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
+
     c_model = ContactModel()
     c_model.first_name = contact.first_name
     c_model.last_name = contact.last_name
@@ -26,14 +35,18 @@ def create_contact(contact:ContactSchema):
     return res
 
 @router.delete('/delete-contact')
-def delete_contact(contact_id:int):
+def delete_contact(contact_id:int,credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
+
     ops = ContactOperations()
     res = ops.delete_contact(contact_id)
     return res
     
 
 @router.post('/signin')
-def sign_in(account:AccountSchema):
+def sign_in(account:AccountSchema,credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
+
     a_model = AccountModel()
     a_model.email = account.email
     a_model.user_pwd = account.password
@@ -42,7 +55,9 @@ def sign_in(account:AccountSchema):
     return res
 
 @router.post('/signup')
-def sign_up(account:AccountSchema):
+def sign_up(account:AccountSchema,credentials: HTTPBasicCredentials = Depends(http_basic)):
+    ss.verify(credentials)
+
     a_model = AccountModel()
     a_model.email = account.email
     a_model.user_pwd = account.password
