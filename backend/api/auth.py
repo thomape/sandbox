@@ -9,11 +9,9 @@ from dotenv import load_dotenv,find_dotenv
 class SecurityService:
 
     def __init__(self):
-        #load_dotenv('auth.env')
-        #self.username = os.getenv('BASIC_AUTH_USERNAME')
-        #self.password = os.getenv('BASIC_AUTH_PASSWORD')
-        self.username = 'hello'
-        self.password = 'hello'
+        load_dotenv('/home/terrington/projects/sandbox/backend/api/auth.env')
+        self.username = os.getenv('BASIC_AUTH_USERNAME')
+        self.password = os.getenv('BASIC_AUTH_PASSWORD')
 
 
     def verify(self, credentials: HTTPBasicCredentials) -> None:

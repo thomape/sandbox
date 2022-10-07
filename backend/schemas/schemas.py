@@ -3,10 +3,10 @@ from typing import Optional
 
 
 class ContactSchema(BaseModel):
-    id: Optional[int] = None
+    # id: Optional[int] = None
     first_name: str
     last_name: str
-    email: Optional[str] = None
+    email: str
 
 class AccountSchema(BaseModel):
     #user_id: Optional[int] = None

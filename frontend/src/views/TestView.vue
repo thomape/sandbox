@@ -1,5 +1,6 @@
 <template>
   <section class="section" id="top">
+    <TestCaroComp />
     <section class="section">
       <div class="tile is-ancestor">
         <div class="tile is-vertical is-8">
@@ -431,9 +432,8 @@
         </div>
       </div>
     </div>
-    <div class="is-divider"></div>
   </section>
-  <TestCaroComp />
+  <div class="is-divider"></div>
 </template>
 
 <script>

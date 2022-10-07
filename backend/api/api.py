@@ -35,11 +35,11 @@ def create_contact(contact:ContactSchema,credentials: HTTPBasicCredentials = Dep
     return res
 
 @router.delete('/delete-contact')
-def delete_contact(contact_id:int,credentials: HTTPBasicCredentials = Depends(http_basic)):
+def delete_contact(c_model:ContactSchema,credentials: HTTPBasicCredentials = Depends(http_basic)):
     ss.verify(credentials)
 
     ops = ContactOperations()
-    res = ops.delete_contact(contact_id)
+    res = ops.delete_contact(c_model)
     return res
     
 

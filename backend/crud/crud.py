@@ -5,7 +5,7 @@ import hashlib
 import hmac
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
-from models.models import AccountModel, Base
+from models.models import AccountModel, Base, ContactModel
 from database.database import DBConnection
 
 
@@ -38,10 +38,10 @@ class ContactOperations(BaseOperations):
         session.close()
         return session
 
-    def delete_contact(self, contact_id):
+    def delete_contact(self, c_model):
         Session = sessionmaker(bind=self.engine)
         session = Session()
-        session.delete(contact_id)
+        session.query(ContactModel).filter(ContactModel.email == c_model.email).delete()
         session.commit()
         return('Successfully deleted from DB')
 
