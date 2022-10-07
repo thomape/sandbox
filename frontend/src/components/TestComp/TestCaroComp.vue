@@ -9,6 +9,9 @@
     <div class="circle"></div>
     <div class="circle"></div>
   </div>
+  <article>
+    
+  </article>
 </template>
 
 <style lang="scss" scoped>
