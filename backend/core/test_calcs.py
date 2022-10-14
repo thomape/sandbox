@@ -12,7 +12,7 @@ class ItineraryDetails:
         return self.destination['distance'] / (self.package['max_speed'])
 
     def calc_cost(self):
-        return (self.total_weight * 10000 * self.destination['distance']) + 10000
+        return (self.total_weight * 10000 * self.destination['distance'] + self.package['package_rate'])
     
     def calc_time_passed(self):
         return self.time * (1/(1-self.package['max_speed']**2)**0.5)
@@ -50,6 +50,7 @@ class Customer:
         print('|--------------------------------------|------------------------------------------|')
         print(f'| Ticket Cost: ' + '${:,.2f}'.format(self.details.cost))   
         print('|--------------------------------------|------------------------------------------|')
+        print('\n\n')
 
 
 
@@ -112,13 +113,13 @@ class Packages:
 
         match self.package.lower():
             case 'silver':
-                allowances = {'max_speed':0.6,'max_weight':200}
+                allowances = {'max_speed':0.6,'max_weight':200,'package_rate': 1000000}
             case 'gold':
-                allowances = {'max_speed':0.7,'max_weight':220}
+                allowances = {'max_speed':0.7,'max_weight':220,'package_rate': 2000000}
             case 'platinum':
-                allowances = {'max_speed':0.8,'max_weight':260}
+                allowances = {'max_speed':0.8,'max_weight':260,'package_rate': 4000000}
             case 'beryllium':
-                allowances = {'max_speed':0.99,'max_weight':500}
+                allowances = {'max_speed':0.99,'max_weight':500,'package_rate': 8000000}
             case _:
                 allowances = {'max_speed':0.5,'max_weight':100}
 
@@ -133,7 +134,7 @@ if __name__ == '__main__':
         'last_name': 'Smeagol', 
         'age':23,
         'id_number':'123-45-6789',
-        'package':'Silver',
+        'package':'Beryllium',
         'weight':185,
         'luggage_weight':50,
         'destination':'proxima centauri b'})
@@ -144,6 +145,16 @@ if __name__ == '__main__':
         'age':21,
         'id_number':'246-80-1234',
         'package':'Silver',
+        'weight':125,
+        'luggage_weight':80,
+        'destination':'proxima centauri b'})
+
+    lisa2 = Customer({
+        'first_name': 'Lisa',
+        'last_name': 'Smeagol', 
+        'age':21,
+        'id_number':'246-80-1234',
+        'package':'Beryllium',
         'weight':125,
         'luggage_weight':80,
         'destination':'proxima centauri b'})
@@ -160,8 +171,9 @@ if __name__ == '__main__':
 
 
     #bob.print_ticket()
-    #lisa.print_ticket()
-    frank.print_ticket()
+    lisa.print_ticket()
+    lisa2.print_ticket()
+    #frank.print_ticket()
     
 
     

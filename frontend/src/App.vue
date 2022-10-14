@@ -107,6 +107,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url(https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap);
 $dark-color: #111;
 $light-color: #eee;
 
